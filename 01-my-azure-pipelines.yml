@@ -17,7 +17,7 @@ jobs:
 
   - script: |
     echo Add other tasks to build, test, and deploy your project.
-    echo https://aka.ms/yml
+    echo See https://aka.ms/yml
     displayName: 'Run a multi-line script'
 - job: Job2
   steps:
