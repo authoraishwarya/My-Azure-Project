@@ -17,9 +17,9 @@ jobs:
 
   - script: |
     echo Add other tasks to build, test, and deploy your project.
-    displayName: 'Run a multi-line script'
+    displayName:'Run a multi-line script'
 
 - job: Job2
   steps:
     - script: echo JOB 2.
-      displayName: 'Run a one-line script'
+      displayName: 'Another one-line script'
