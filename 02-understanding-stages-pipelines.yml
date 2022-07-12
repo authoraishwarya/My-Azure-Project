@@ -22,8 +22,7 @@ stages:
           **/*.yml
           **/*.tf
         TargetFolder: '$(Build.AritfactStagingDirectory)'
-    - bash: ls -R (Build.AritfactStagingDirectory)
-
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
 # - stage: DevDeploymentJob
 #   dependsOn: Build
 #   jobs:
