@@ -10,28 +10,30 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo Build FirstJob
-    - bash: echo $(PipelineLevelVariable)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
 
-- stage: DevDeploymentJob
-  dependsOn: Build
-  jobs:
-  - job: DevDeploymentJob
-    steps:
-    - bash: echo DevDeploymentJob
+# - stage: DevDeploymentJob
+#   dependsOn: Build
+#   jobs:
+#   - job: DevDeploymentJob
+#     steps:
+#     - bash: echo DevDeploymentJob
 
-- stage: QADeploymentJob
-  dependsOn: Build
-  jobs:
-  - job: QADeploymentJob
-    steps:
-    - bash: echo QADeploymentJob
+# - stage: QADeploymentJob
+#   dependsOn: Build
+#   jobs:
+#   - job: QADeploymentJob
+#     steps:
+#     - bash: echo QADeploymentJob
 
 
-- stage: ProdDeployment
-  dependsOn:
-  - DevDeploymentJob
-  - QADeploymentJob
-  jobs:
-  - job: ProdDeploymentJob
-    steps:
-    - bash: echo ProdDeploymentJob
+# - stage: ProdDeployment
+#   dependsOn:
+#   - DevDeploymentJob
+#   - QADeploymentJob
+#   jobs:
+#   - job: ProdDeploymentJob
+#     steps:
+#     - bash: echo ProdDeploymentJob
