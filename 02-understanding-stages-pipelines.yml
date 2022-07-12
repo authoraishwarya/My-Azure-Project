@@ -10,10 +10,10 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo Build FirstJob
-    - bash: echo java -version
-    - bash: echo python --version
-    - bash: echo node --version
-    - bash: echo mvn -version
+    - bash: java -version
+    - bash: python --version
+    - bash: node --version
+    - bash: mvn -version
     - bash: ls -R $(Build.ArtifactStagingDirectory)
     - task: CopyFiles@2
       inputs:
