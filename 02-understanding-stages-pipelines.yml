@@ -10,9 +10,19 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo Build FirstJob
-    - bash: echo $(Build.BuildNumber)
-    - bash: echo $(Build.BuildId)
-    - bash: echo $(Build.SourceBranchName)
+    - bash: echo java -version
+    - bash: echo python --version
+    - bash: echo node --version
+    - bash: echo mvn -version
+    - bash: ls -R (Build.AritfactStagingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: |
+          **/*.yml
+          **/*.tf
+        TargetFolder: '$(Build.AritfactStagingDirectory)'
+    - bash: ls -R (Build.AritfactStagingDirectory)
 
 # - stage: DevDeploymentJob
 #   dependsOn: Build
