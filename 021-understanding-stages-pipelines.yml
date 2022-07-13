@@ -22,26 +22,11 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
-# - stage: DevDeploymentJob
-#   dependsOn: Build
-#   jobs:
-#   - job: DevDeploymentJob
-#     steps:
-#     - bash: echo DevDeploymentJob
+    - task: CopyFiles@2
+      inputs:
+        targetFolder: '$(Build.ArtifactStagingDirectory)'    
 
-# - stage: QADeploymentJob
-#   dependsOn: Build
-#   jobs:
-#   - job: QADeploymentJob
-#     steps:
-#     - bash: echo QADeploymentJob
-
-
-# - stage: ProdDeployment
-#   dependsOn:
-#   - DevDeploymentJob
-#   - QADeploymentJob
-#   jobs:
-#   - job: ProdDeploymentJob
-#     steps:
-#     - bash: echo ProdDeploymentJob
+    - task: PublishBuildArtifacts@1    
+      displayName: 'Publish Artifact: drop'
+      inputs:
+        PathtoPublish: '$(build.artifactstagingdirectory)'
