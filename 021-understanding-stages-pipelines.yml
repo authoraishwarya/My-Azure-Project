@@ -10,22 +10,18 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo Build FirstJob
-    - bash: java -version
-    - bash: python --version
-    - bash: node --version
-    - bash: mvn -version
+    # - bash: java -version
+    # - bash: python --version
+    # - bash: node --version
+    # - bash: mvn -version
     - bash: ls -R $(Build.ArtifactStagingDirectory)
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**'
-        TargetFolder: '$(Build.AritfactStagingDirectory)'
-    - bash: ls -R $(Build.ArtifactStagingDirectory)
+
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
+
 # - stage: DevDeploymentJob
 #   dependsOn: Build
 #   jobs:
