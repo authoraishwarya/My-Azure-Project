@@ -1,0 +1,15 @@
+trigger:
+- main
+
+strategy:
+ matrix:
+   linux:
+     operatingSystem: ubuntu-latest
+   mac:
+     operatingSystem: macos-latest
+pool:
+  vmImage: ${operatingSyatem}
+
+steps:
+- script: echo Running On:${operatingSyatem}
+  displayName: 'Run a one-line script'
